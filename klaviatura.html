@@ -1,0 +1,57 @@
+<html>
+<head>
+    <title>klav</title>
+    <style>
+        .out{
+            font-size: 24px;
+            font-family: monospace;
+        }
+    </style>
+    </head>
+    <body>
+    
+    <pre class="form-control col col-lg-12 text-center out"></pre>
+    
+    
+    <script>
+        
+        const t = [
+        "privet",
+            " rodnoi",
+        ];
+        
+        function typeText(){
+            let line = 0;
+            let count = 0;
+            let out = '';
+            let htmlOut=document.querySelector('.out');
+            
+            function typeLine(){
+                //nkarel
+             let interval = setTimeout(function(){
+                 out += t[line][count];
+                 htmlOut.innerHTML=out + '|';
+                 count++;
+                 if(count>=t[line].length){
+                     count = 0;
+                     line++;
+                     if(line == t.length){
+                         clearTimeout(interval);
+                          htmlOut.innerHTML=out;
+                         return true;
+                     }
+                 }
+                 typeLine();
+             } ,getRandomInt (350));   
+            
+            
+            }
+            typeLine();
+        }
+        function getRandomInt(max){
+            return Math.floor(Math.random() * Math.floor(max));
+        }
+        typeText();
+        </script>
+    </body>
+</html>
